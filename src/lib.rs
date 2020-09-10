@@ -42,7 +42,7 @@ impl Component for Index {
 
     fn view(&self) -> Html {
         html! {
-            <body class="absolute">
+            <body>
                 <section class="text-gray-300 bg-gray-900 min-h-screen">
                     <div class="container px-5 py-12 mx-auto">
                         <Heading title={self.title} tagline={self.tagline} />

@@ -23,7 +23,7 @@ impl Component for Heading {
     }
     fn view(&self) -> Html {
         html! {
-            <div class="flex flex-wrap w-full mb-10 flex-col items-center text-center">
+            <div class="flex flex-wrap w-full mb-6 flex-col items-center text-center">
                 <h1 class="sm:text-4xl text-3xl font-medium title-font mb-2 text-gray light-mode:text-dark-light">
                     {self.title}
                 </h1>
