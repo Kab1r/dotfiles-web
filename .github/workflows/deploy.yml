@@ -26,7 +26,7 @@ jobs:
               run: npm run build
 
             - name: Publish
-              run: amondnet/vercel-action@v19
+              uses: amondnet/vercel-action@v19
               with:
                 vercel-project-id: ${{ secrets.PROJECT_ID }}
                 vercel-token: ${{ secrets.VERCEL_TOKEN }}
