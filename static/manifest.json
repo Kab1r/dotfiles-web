@@ -1,0 +1,25 @@
+{
+  "short_name": "DotFiles",
+  "name": "Kabir Kwatra's DotFiles",
+  "description": "The DotFiles used by Kabir Kwatra",
+  "display": "minimal-ui",
+  "theme_color": "#24292e",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
+    },
+    {
+      "src": "/browser-specific/android-chrome-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/browser-specific/android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

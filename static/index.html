@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DotFiles</title>
+    <meta name="description" content="Kabir Kwatra's Dotfiles that include configurations
+               for the fish shell, doom emacs, and more." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Browser Specific Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/browser-specific/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/browser-specific/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/browser-specific/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/browser-specific/favicon-16x16.png" />
+    <link rel="mask-icon" href="/browser-specific/safari-pinned-tab.svg" color="#000000" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="theme-color" content="#ffffff" />
+    <!---->
+
+    <!-- Yew WASM -->
+    <script src="/dotfiles.js"></script>
+    <!---->
+
+    <!-- Service Worker Registration -->
+    <script type="text/javascript">
+        let prod = false;
+        if (prod && "serviceWorker" in navigator) {
+            navigator.serviceWorker.register("/service-worker.js");
+            console.log("Service Worker Loaded!");
+        } else {
+            console.warn("Service Worker Not Supported");
+        }
+    </script>
+    <!-- -->
+</head>
+
+</html>

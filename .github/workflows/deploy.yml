@@ -1,0 +1,35 @@
+name: Deploy to Vercel
+
+on: [push]
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Setup Rust
+              uses: actions-rs/toolchain@v1
+              with:
+                toolchain: stable
+                target: wasm32-unknown-unknown
+
+            - name: Setup Node
+              uses: actions/setup-node@v1
+              with:
+                node-versions: 14
+
+            - name: Install Dependencies
+              run: npm install
+
+            - name: Build
+              run: npm run build
+
+            - name: Publish
+              run: amondnet/vercel-action@v19
+              with:
+                vercel-project-id: ${{ secrets.PROJECT_ID }}
+                vercel-token: ${{ secrets.VERCEL_TOKEN }}
+                github-token: ${{ secrets.GITHUB_TOKEN }}
+                vercel-org-id: ${{ secrets.ORG_ID }}
+                vercel-args: '--prod'

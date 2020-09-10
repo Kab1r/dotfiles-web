@@ -1,0 +1,42 @@
+{
+    "version": 2,
+    "public": true,
+    "github": {
+        "enabled": false
+    },
+    "builds": [{
+        "src": "./dist/**",
+        "use": "@vercel/static"
+    }],
+    "routes": [{
+            "src": "/(.*)",
+            "dest": "dist/$1"
+        },
+        {
+            "src": "/github",
+            "status": 307,
+            "dest": "https://github.com/KabirKwatra/dotfiles"
+        },
+        {
+            "src": "/gitlab",
+            "status": 307,
+            "dest": "https://gitlab.com/KabirKwatra/dotfiles"
+        },
+        {
+            "src": "/git",
+            "dest": "https://github.com/KabirKwatra/dotfiles"
+        },
+        {
+            "src": "/git/(.*)",
+            "dest": "https://github.com/KabirKwatra/dotfiles/$1"
+        },
+        {
+            "src": "/KabirKwatra/dotfiles",
+            "dest": "https://github.com/KabirKwatra/dotfiles"
+        },
+        {
+            "src": "/KabirKwatra/dotfiles/(.*)",
+            "dest": "https://github.com/KabirKwatra/dotfiles/$1"
+        }
+    ]
+}
