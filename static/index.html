@@ -25,7 +25,7 @@
 
     <!-- Service Worker Registration -->
     <script type="text/javascript">
-        let prod = false;
+        let prod = true;
         if (prod && "serviceWorker" in navigator) {
             navigator.serviceWorker.register("/service-worker.js");
             console.log("Service Worker Loaded!");
