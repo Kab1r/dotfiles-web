@@ -42,28 +42,30 @@ impl Component for Index {
 
     fn view(&self) -> Html {
         html! {
-            <section class="text-gray-300 bg-gray-900 min-h-screen">
-                <div class="container px-5 py-12 mx-auto">
-                    <Heading title={self.title} tagline={self.tagline} />
-                    <div class="flex flex-wrap w-full mb-5 flex-col items-center text-center">
-                        <small>{"Quick Install"}</small>
-                            <CodeButton script={self.script}/>
-                        <a href={self.button_href}>
-                            <button class="flex mx-auto mt-5 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
-                                {self.button_text}
-                            </button>
-                        </a>
+            <body class="absolute">
+                <section class="text-gray-300 bg-gray-900 min-h-screen">
+                    <div class="container px-5 py-12 mx-auto">
+                        <Heading title={self.title} tagline={self.tagline} />
+                        <div class="flex flex-wrap w-full mb-5 flex-col items-center text-center">
+                            <small>{"Quick Install"}</small>
+                                <CodeButton script={self.script}/>
+                            <a href={self.button_href}>
+                                <button class="flex mx-auto mt-5 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">
+                                    {self.button_text}
+                                </button>
+                            </a>
+                        </div>
+                        <ContentModuleContainer>
+                            { for self.content_modules.iter().map(|item| item.render())}
+                        </ContentModuleContainer>
                     </div>
-                    <ContentModuleContainer>
-                        { for self.content_modules.iter().map(|item| item.render())}
-                    </ContentModuleContainer>
-                </div>
-            </section>
+                </section>
+            </body>
         }
     }
 }
 
 #[wasm_bindgen(start)]
 pub fn run_app() {
-    App::<Index>::new().mount_to_body();
+    App::<Index>::new().mount_as_body();
 }
