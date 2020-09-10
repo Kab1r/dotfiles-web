@@ -5,7 +5,6 @@ module.exports = {
     },
     variants: ['focus', 'hover', 'active', 'responsive'],
     purge: [
-        './src/**/*.rs',
         './static/**/*.html'
     ]
 }
