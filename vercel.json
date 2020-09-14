@@ -31,6 +31,10 @@
             "dest": "https://github.com/KabirKwatra/dotfiles/$1"
         },
         {
+            "src": "/setup.sh",
+            "dest": "https://raw.githubusercontent.com/KabirKwatra/dotfiles/master/executable_dot_setup.sh"
+        },
+        {
             "src": "/(.*)",
             "dest": "dist/$1"
         }
