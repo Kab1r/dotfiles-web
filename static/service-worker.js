@@ -1,6 +1,10 @@
 const PRECACHE = "dotfile-kabcache-v2";
 const RUNTIME = "runtime";
 const CACHED_URLS = [
+    '/',
+    '/1.dotfiles.js',
+    '/dotfiles.js',
+    '/dotfiles.wasm',
     "manifest.json",
     "favicon.svg",
     "/browser-specific/android-chrome-192x192.png",
@@ -17,31 +21,36 @@ const CACHED_URLS = [
     "/browser-specific/mstile-310x310.png",
     "/browser-specific/safari-pinned-tab.svg"
 ];
-self.addEventListener("install", (event) => event.waitUntil(
-    caches.open(PRECACHE)
-    .then((cache) => cache.addAll(CACHED_URLS))
-    .then(self.skipWaiting())
-));
-self.addEventListener("activate", (event) => {
-    const currentCaches = [PRECACHE, RUNTIME];
+self.addEventListener('install', event => {
+    console.log('Attempting to install service worker and cache static assets');
     event.waitUntil(
-        caches.keys()
-        .then((cacheNames) => {
-            return cacheNames.filter((cacheName) => !currentCaches.includes(cacheName));
-        }).then((cachesToDelete) => {
-            return Promise.all(cachesToDelete.map((cacheToDelete) => caches.delete(cacheToDelete)));
+        caches.open(PRECACHE)
+        .then(cache => {
+            return cache.addAll(CACHED_URLS);
         })
-        .then(() => self.clients.claim()));
+    );
 });
-self.addEventListener("fetch", (event) => {
-    if (event.request.url.startsWith(self.location.origin)) {
-        event.respondWith(caches.match(event.request).then((cachedResponse) => {
-            if (cachedResponse) { return cachedResponse; }
-            return (cachedResponse) ? cachedResponse : caches.open(RUNTIME).then(async(cache) => {
-                const response = await fetch(event.request);
-                await cache.put(event.request, response.clone());
+
+self.addEventListener('fetch', event => {
+    console.log('Fetch event for ', event.request.url);
+    event.respondWith(
+        caches.match(event.request)
+        .then(response => {
+            if (response) {
+                console.log('Found ', event.request.url, ' in cache');
                 return response;
+            }
+            console.log('Network request for ', event.request.url);
+            return fetch(event.request)
+
+            .then(response => {
+                // TODO: Respond with custom 404 page
+                return caches.open(PRECACHE).then(cache => {
+                    cache.put(event.request.url, response.clone());
+                    return response;
+                });
             });
-        }));
-    }
+
+        }).catch(_ => {})
+    );
 });
