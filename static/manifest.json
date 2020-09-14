@@ -4,7 +4,7 @@
     "description": "The DotFiles used by Kabir Kwatra",
     "display": "minimal-ui",
     "theme_color": "#24292e",
-    "background_color": "1A202C",
+    "background_color": "#1A202C",
     "start_url": "/",
     "icons": [{
             "src": "/favicon.svg",
@@ -20,6 +20,12 @@
             "src": "/browser-specific/android-chrome-512x512.png",
             "sizes": "512x512",
             "type": "image/png"
+        },
+        {
+            "src": "/icon.png",
+            "sizes": "8192x8192",
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ]
 }
