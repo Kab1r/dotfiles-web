@@ -4,11 +4,8 @@
     "github": {
         "enabled": false
     },
-    "builds": [{
-        "src": "./dist/**",
-        "use": "@vercel/static"
-    }],
-    "routes": [{
+    "routes": [
+        {
             "src": "/(.*)",
             "dest": "dist/$1"
         },
