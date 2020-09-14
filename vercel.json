@@ -4,12 +4,7 @@
     "github": {
         "enabled": false
     },
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "dist/$1"
-        },
-        {
+    "routes": [{
             "src": "/github",
             "status": 307,
             "dest": "https://github.com/KabirKwatra/dotfiles"
@@ -34,6 +29,10 @@
         {
             "src": "/KabirKwatra/dotfiles/(.*)",
             "dest": "https://github.com/KabirKwatra/dotfiles/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "dist/$1"
         }
     ]
 }
