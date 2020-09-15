@@ -29,7 +29,7 @@ impl Component for CodeButton {
         let script = <&str>::clone(&self.script);
         let code_click_callback = Callback::from(move |_| copy_to_clipboard(script));
         html! {
-            <button onclick=code_click_callback class="flex mx-auto mt-2 text-white bg-gray-700 active:bg-indigo-600 border-0 py-2 px-4 focus:outline-none rounded text-xs ">
+            <button onclick=code_click_callback class="flex mx-auto mt-2 text-white bg-gray-700 active:bg-indigo-600 border-0 p-2 focus:outline-none rounded text-xs">
                 <code class="language-shell">
                     {self.script}
                 </code>

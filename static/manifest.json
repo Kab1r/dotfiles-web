@@ -2,8 +2,8 @@
     "short_name": "DotFiles",
     "name": "Kabir Kwatra's DotFiles",
     "description": "The DotFiles used by Kabir Kwatra",
-    "display": "minimal-ui",
-    "theme_color": "#24292e",
+    "display": "fullscreen",
+    "theme_color": "#24292E",
     "background_color": "#1A202C",
     "start_url": "/",
     "icons": [{
