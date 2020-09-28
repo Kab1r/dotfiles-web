@@ -1,14 +1,15 @@
 use yew::prelude::*;
+
 // Model
 #[derive(Properties, Clone, PartialEq)]
-pub struct GitButton {
-    pub children: Children,
-    pub button_href: &'static str,
+pub struct FontAwesomeIcon {
+    pub icon: Vec<&'static str>,
 }
+
 // View
-impl Component for GitButton {
+impl Component for FontAwesomeIcon {
     type Message = ();
-    type Properties = GitButton;
+    type Properties = FontAwesomeIcon;
     fn create(props: Self::Properties, _link: ComponentLink<Self>) -> Self {
         props
     }
@@ -21,11 +22,7 @@ impl Component for GitButton {
     }
     fn view(&self) -> Html {
         html! {
-            <a href={self.button_href}>
-                <button class="flex mx-auto text-white bg-indigo-500 mar py-2 px-2 focus:outline-none hover:bg-indigo-600 rounded-full text-lg">
-                    {self.children.clone()}
-                </button>
-            </a>
+            <a class={self.icon.iter().fold("".to_string(), |acc, class| acc + " " + class)} />
         }
     }
 }

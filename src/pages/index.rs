@@ -8,6 +8,8 @@ pub struct Index {
     pub tagline: &'static str,
     pub script: &'static str,
     pub github_url: &'static str,
+    pub gitlab_url: &'static str,
+    pub sourcehut_url: &'static str,
     pub content_modules: Vec<ContentModule>,
 }
 
@@ -34,9 +36,17 @@ impl Component for Index {
                 <div class="flex flex-wrap w-full mb-5 flex-col items-center text-center">
                     <small>{"Quick Install"}</small>
                     <CodeButton script={self.script}/>
-                    <GitButton button_href={self.github_url}>
-                        {"Github"}
-                    </GitButton>
+                    <div class="flex flex-wrap mb-2 gap-x-2 flex-row items-center mt-5">
+                        <GitButton button_href={self.github_url}>
+                            <FontAwesomeIcon icon=vec!["fab", "fa-github-alt", "fa-3x"] />
+                        </GitButton>
+                        <GitButton button_href={self.gitlab_url}>
+                            <FontAwesomeIcon icon=vec!["fab", "fa-gitlab", "fa-3x"] />
+                        </GitButton>
+                        <GitButton button_href={self.sourcehut_url}>
+                            <FontAwesomeIcon icon=vec!["far", "fa-circle", "fa-3x"] />
+                        </GitButton>
+                    </div>
                 </div>
                 <ContentModuleContainer>
                     { for self.content_modules.iter().map(|item| item.render())}
