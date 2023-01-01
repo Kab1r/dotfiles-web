@@ -12,8 +12,8 @@
         "style-loader": "^1.2.1",
         "tailwindcss": "^1.8.5",
         "wasm-pack": "^0.9.1",
-        "webpack": "^4.44.1",
-        "webpack-cli": "^3.3.12",
+        "webpack": "^5.75.0",
+        "webpack-cli": "^5.0.1",
         "webpack-dev-server": "^3.11.0",
         "@fortawesome/fontawesome-free": "^5.14.0",
         "file-loader": "^6.1.0"
